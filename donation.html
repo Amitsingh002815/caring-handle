@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Donations</title>
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            /* background-color: rgb(44, 228, 249); */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 220px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+           
+            /* box-shadow: 0 0 50px rgba(0, 0, 0, 0.1); */
+            filter: drop-shadow(10px 7px 10px black);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #578d9f;
+            text-align: center;
+        }
+
+        .delete-btn, .edit-btn {
+            padding: 5px 10px;
+            cursor: pointer;
+            /* background-color: rgb(44, 228, 249); */
+         
+        }
+        .edit-btn:hover{
+            background-color: rgb(33, 210, 26);
+        }
+        .delete-btn:hover{
+            background-color: red;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <section>
+        <!-- User Sidebar Starts from Here -->
+        <div class="navbar" id="navigation">
+          <div class="img_hand">
+            <img src="https://www.pinclipart.com/picdir/big/321-3212147_caring-hands-clip-art-care-vector-black-and.png" style="height: 50px; width: 50px;">
+            <span>Caring Hand</span>
+          </div>
+
+            <ul class="center-nav">
+                <li><i class="fa-solid fa-house"></i><a href="#"> Dashboard </a></li>
+                <li><i class="fa-solid fa-copy"></i><a href="ngo.html"> NGO Details</a></li>
+                <li><i class="fa-solid fa-copy"></i><a href="donation.html"> Donation Details</a></li>
+                <li><i class="fa-sharp fa-solid fa-chart-simple"></i><a href="analitics.html"> Analytics </a></li>
+                <li><i class="fa-solid fa-thumbs-up"></i><a href="#"> Likes </a></li>
+                <li><i class="fa-solid fa-comment"></i><a href="#"> Comments </a></li>
+                <li><i class="fa-sharp fa-solid fa-floppy-disk"></i><a href="#"> Saves </a></li>
+                <li><i class="fa-solid fa-share"></i><a href="#"> Share </a></li>
+                <li><i class="fa-solid fa-rectangle-ad"></i><a href="#"> Ads </a></li>
+            </ul>
+            <ul class="bottom-nav">
+                <hr>
+                <li><i class="fa-solid fa-gear"></i><a href="#"> Settings </a></li>
+                <li><i class="fa-solid fa-power-off"></i><a href="index.php"> Logout </a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <div class="main-top">
+                <div class="bars" id="menu">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <div class="input">
+                    <input type="text" placeholder="Search here...">
+                </div>
+                <div class="user">
+                    <img src="https://icon-library.com/images/human-icon-png/human-icon-png-2.jpg" alt="">
+                </div>
+            </div>
+
+    <div class="container">
+        <h1>Donation Details</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Amount</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="donationList"></tbody>
+        </table>
+    </div>
+    <script>
+        // Sample data (replace with actual donation data)
+        const donations = [
+            { id: 1, name: 'Amit ingh', amount: 100 },
+           
+        ];
+
+        // Function to display donation entries
+        function displayDonations() {
+            const donationList = document.getElementById('donationList');
+            donationList.innerHTML = '';
+
+            donations.forEach(donation => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${donation.id}</td>
+                    <td>${donation.name}</td>
+                    <td>$${donation.amount}</td>
+                    <td>
+                        <button class="edit-btn" onclick="editDonation(${donation.id})">Edit</button>
+                        <button class="delete-btn" onclick="deleted(${donation.id})">Delete</button>
+                    </td>
+                `;
+                donationList.appendChild(row);
+            });
+        }
+
+        // Function to edit a donation
+        function editDonation(id) {
+            // Implement edit functionality here
+            alert(`Editing donation with ID ${id}`);
+        }
+
+        // Function to delete a donation
+        function deleted(id) {
+            // Implement delete functionality here
+            alert(`Deleting donation with ID ${id}`);
+        }
+
+        // Display initial donations
+        displayDonations();
+    </script>
+</body>
+
+</html>

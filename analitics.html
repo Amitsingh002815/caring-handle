@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pie Chart</title>
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   
+  
+       
+    <style>
+        :root {
+            --white: #ffffff;
+        }
+        
+        .box {
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+            width: 600px;
+            height: 600px;
+            background: var(--white);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+      
+        canvas#donationChart {
+            margin-top: 20px;
+            /* Adjust as needed */
+            height: 300px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <!-- User Sidebar Starts from Here -->
+        <div class="navbar" id="navigation">
+          <div class="img_hand">
+            <img src="https://www.pinclipart.com/picdir/big/321-3212147_caring-hands-clip-art-care-vector-black-and.png" style="height: 50px; width: 50px;">
+            <span>Caring Hand</span>
+          </div>
+
+            <ul class="center-nav">
+                <li><i class="fa-solid fa-house"></i><a href="#"> Dashboard </a></li>
+                <li><i class="fa-solid fa-copy"></i><a href="ngo.html"> NGO Details</a></li>
+                <li><i class="fa-solid fa-copy"></i><a href="donation.html"> Donation Details</a></li>
+                <li><i class="fa-sharp fa-solid fa-chart-simple"></i><a href="analitics.html"> Analytics </a></li>
+                <li><i class="fa-solid fa-thumbs-up"></i><a href="#"> Likes </a></li>
+                <li><i class="fa-solid fa-comment"></i><a href="#"> Comments </a></li>
+                <li><i class="fa-sharp fa-solid fa-floppy-disk"></i><a href="#"> Saves </a></li>
+                <li><i class="fa-solid fa-share"></i><a href="#"> Share </a></li>
+                <li><i class="fa-solid fa-rectangle-ad"></i><a href="#"> Ads </a></li>
+            </ul>
+            <ul class="bottom-nav">
+                <hr>
+                <li><i class="fa-solid fa-gear"></i><a href="#"> Settings </a></li>
+                <li><i class="fa-solid fa-power-off"></i><a href="index.php"> Logout </a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <div class="main-top">
+                <div class="bars" id="menu">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <div class="input">
+                    <input type="text" placeholder="Search here...">
+                </div>
+                <div class="user">
+                    <img src="https://icon-library.com/images/human-icon-png/human-icon-png-2.jpg" alt="">
+                </div>
+            </div>
+    <div class="box">
+        <canvas id="donationChart"></canvas>
+    </div>
+
+    <script>
+        // JavaScript for creating the pie chart
+        const donationData = {
+            labels: ['Food', 'Clothes', 'Money'],
+            datasets: [{
+                label: 'Quantity to Donate',
+                data: [20, 30, 50],
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 205, 86)'
+                ],
+                hoverOffset: 4
+            }]
+        };
+
+        const ctx = document.getElementById('donationChart').getContext('2d');
+
+        const myPieChart = new Chart(ctx, {
+            type: 'pie',
+            data: donationData,
+        });
+
+        // Toggle navigation menu
+        const toggle = document.querySelector('.toggle');
+        const navigation = document.querySelector('.box');
+        const main = document.querySelector('body');
+
+        toggle.onclick = function () {
+            navigation.classList.toggle('active');
+            main.classList.toggle('active');
+        };
+    </script>
+</body>
+</html>
